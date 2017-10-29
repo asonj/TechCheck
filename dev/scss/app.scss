@@ -1,0 +1,408 @@
+html{
+  height: 100%;
+  background-color: #f5f5f5;
+}
+
+body{
+    background-color: #f5f5f5;
+    
+}
+
+
+.d-block{
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.hidden-for-two{
+  display: none;
+}
+
+.nav{
+  background-color: #3273dc;  
+  padding-left: 50px;
+  padding-right: 50px;
+  
+  .navbar-link{
+    color: white;
+  }
+  
+  svg{
+    fill: #3273dc;
+  }
+}
+
+.items {
+  min-height: 100vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    // height: 100vh;
+    // .columns.is-ancestor{
+    //     flex-wrap: wrap;
+    //     padding-top: 3%;
+    //     .is-parent .card{
+    //         min-width: 100%;
+    //     }
+    // }
+}
+
+.media-right{
+    margin-left: auto;
+}
+
+.ml-auto{
+    margin-left: auto;
+}
+
+.w-100{
+    width: 100%;
+}
+.pt-5{
+    padding-top: 5%;
+}
+
+.px-5{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.pr-1{
+    padding-right: 1%;
+}
+
+$spaceamounts: (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100); // Adjust this to include the pixel amounts you need.
+$sides: (top, bottom, left, right); // Leave this variable alone
+
+@each $space in $spaceamounts {
+  @each $side in $sides {
+    .m-#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+  
+    .p-#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  background-color: #fff;
+}
+.icon-minus {
+  width: 0.7857142857142857em;
+}
+
+.card.order{
+  margin-bottom: 20px;
+}
+
+.hover-blue:hover { 
+    color: hsl(171, 100%, 41%);
+  
+}
+
+
+.header-tab {
+  width: 100%;
+  background-color: rgba(0,0,0,0);
+  border-radius: 5px 5px 0 0 ;
+  color: white;
+  border: none;
+  
+  &.active {
+    background-color: #f5f5f5;
+    border: 3px solid #f5f5f5;
+    color: #4a4a4a;
+    font-weight:bold;
+  }
+}
+
+.grid, .grid-index {
+  margin: 0 auto;
+}
+
+.grid-index {
+  margin-left: 6%;
+  @media screen and (max-width: 787px){
+    
+  }
+  @media screen and (min-width: 1157px){
+    margin-left: 3%;
+    
+  }
+  @media screen and (min-width: 1538px){
+    margin-left: 1%;
+    
+  }
+}
+
+select{
+  width: 100%;
+}
+
+.dropdown, .dropdown .select {
+  width: 100%;
+  
+}
+
+.grid-sizer{
+  width: 30px;
+}
+
+.element-item-index.card {
+  float: left;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  width: 40%;
+  
+  .tag{
+    font-size: 12px;
+  }
+  
+  .card-image{
+    border-bottom: 1px solid hsl(0, 0%, 90%);
+  }
+  
+  hr{
+    margin: 0 5%;
+  }
+  // img{
+  //   padding: 10px;
+  // }
+  @media screen and (max-width: 787px){
+    width: 80%;
+    .tag{
+      font-size: 1rem;
+    }
+  }
+  @media screen and (min-width: 1157px){
+    width: 30%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    .tag{
+      font-size: 1rem;
+    }
+  }
+  @media screen and (min-width: 1538px){
+    width: 23%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    
+  }
+}
+
+.order-edit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.icon-check-square-o {
+  margin-left: 5px;
+  vertical-align: middle;
+  width: 0.9324999999999999em;
+  fill: white;
+  background-color: transparent;
+}
+
+.d-flex {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  .box{
+    display: flex;
+    width: 80%;
+  }
+  
+  .columns{
+    width: 100%;
+  }
+}
+
+.myflex{
+  display: flex;
+  flex-direction: columns;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.icon-heart{
+  fill: red;
+}
+
+.tabs .button:not(.active) {
+  transition: background-color 0.3s;
+  &:hover{
+    background-color: hsl(217, 71%, 60%);
+    color: white;
+    
+  }
+}
+
+.hover-green{
+  transition: all 0.3s;
+  color: hsl(217, 71%, 53%);
+  &:hover{
+    background-color: hsl(141, 71%, 48%);
+    border-color: hsl(141, 71%, 48%);;
+    color: white;
+  }
+}
+
+.hover-red{
+  transition: all 0.3s;
+  color: hsl(217, 71%, 53%);;
+  &:hover{
+    background-color: hsl(348, 100%, 61%);
+    color: white;
+  }
+}
+
+
+.element-item .tag{
+  font-weight: bold;
+}
+
+.card-footer .card-footer-item{
+  transition: 
+            background-color 0.3s,
+            color 0.3s;
+  color: hsl(171, 100%, 41%);
+  background-color: white;
+  font-weight: 500;
+  &:nth-child(2):hover {
+    background-color: hsl(217, 71%, 53%);
+    font-weight: bold;
+    color: white;
+  }
+  &:nth-child(3):hover{
+    background-color: hsl(48, 100%, 67%);
+    color: black;
+  }
+  &:nth-child(4):hover{
+    background-color: hsl(141, 71%, 48%);
+    color: white;
+  }
+  &:nth-child(5):hover{
+    background-color: hsl(348, 100%, 61%);
+    color: white;
+  }
+}
+
+
+.footer {
+    height: 142px; /* .push must be the same height as .footer */
+}
+
+
+.box.comment:not(.tooltip) {
+  height: 200px;
+  overflow: auto;
+  position: relative;
+}
+
+.comment-container {
+  display:flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 100%;
+  @media screen and (max-width: 1216px){
+    width: 100%;
+  }
+  
+ 
+}
+
+.logo {
+  font-size: 5rem;
+}
+
+
+.tooltip{
+  z-index: 999;
+  overflow: visible !important;
+}
+
+.buttonToTop{
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background-color: #3273dc;
+  
+  &:hover{
+    background-color: hsl(217, 71%, 58%);
+    svg{
+      background-color: hsl(217, 71%, 58%);
+    }
+  }
+  
+  svg{
+    background-color: #3273dc;
+    fill: white;
+    height: 30px;
+    width: 30px;
+
+   }
+}
+
+/* jQuery UI Datepicker moving pixels fix */
+table.ui-datepicker-calendar {border-collapse: separate;}
+.ui-datepicker-calendar td {border: 1px solid transparent;}
+
+/* jQuery UI Datepicker hide datepicker helper */
+#ui-datepicker-div {display:none;}
+
+/* jQuery UI Datepicker emphasis on selected dates */
+.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
+	background: #743620 none;
+	color: white;
+}
+
+.hoverLink{
+  color: inherit;
+  
+  &:hover{
+    color: hsl(171, 100%, 41%);
+  }
+}
+
+.hero-body{
+  @media screen and (min-width: 1200px){
+    padding-left: 4rem;
+    padding-right: 4rem;
+    margin-left: 2rem;
+  }
+}
+
+
+.invisible{
+  opacity: 1;  
+  transition: opacity 1s ease-in 1;
+}
+
+.invisible{
+  opacity: 0;
+}
+
+
+
+

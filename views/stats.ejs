@@ -1,0 +1,42 @@
+<% include partials/header %>
+<% include partials/nav %>
+
+<section class="hero is-light is-medium">
+    <div class="hero-body columns">
+        <div class="container column  is-10 is-8-widescreen box">
+            <h1 class="is-size-1 has-text-centered p-b-20">Statistics</h1>
+                <div class="">
+                <% if(items){ %>
+                    <div class="content ">
+                        <table class="table sortable is-striped is-fullwidth is-bordered">
+                            <thead>
+                              <tr>
+                                <th>Item</th>
+                                <th>Brand</th>
+                                <th>Available</th>
+                                <th>Total Checkouts</th>
+                                <th>Last Checked Out</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <% items.forEach(function(item){ %>
+                                <tr>
+                                    <td class="hover-blue"> <a href="/items/<%= item._id%>" > <%= item.name %> </a></td>
+                                    <td> <%= item.brand %> </td>
+                                    <td> <%= item.quantity %> </td>
+                                    <td> <%= item.quantityTally %> </td>
+                                    <td sorttable_customkey="<%= item.lastChecked %>"> <%= new Date(item.lastChecked).toLocaleString("en-US", {timeZone: "America/Los_Angeles"}) %> </td>
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+
+                <% } else { %>
+                    <h1 class="has-text-centered is-1">Is Empty</h1>
+                <% } %>
+            </div>
+    </div>  
+</section>
+
+<% include partials/footer %>

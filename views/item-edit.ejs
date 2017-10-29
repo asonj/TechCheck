@@ -1,0 +1,84 @@
+<% include partials/header %>
+<% include partials/nav %>
+
+<section class="hero ">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-size-1">
+        Edit Item
+      </h1>
+      <h2 class="subtitle">
+        
+      </h2>
+    </div>
+  </div>
+</section>
+
+<form class="container column is-centered is-one-quarter is-three-quarters-mobile" action="/items/<%= item._id%>?_method=PUT" method="POST">
+    <div class="field">
+      <label class="label">Item Name</label>
+      <div class="control">
+        <input class="input" type="text" name="item[name]" value="<%= item.name %>">
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Item Brand</label>
+      <div class="control">
+        <input class="input" type="text" name="item[brand]" value="<%= item.brand %>">
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Quantity Available</label>
+      <div class="control">
+        <input class="input" type="text" name="item[quantity]" value="<%= item.quantity %>">
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Category</label>
+
+      <div class="control">
+        <div class="select" >
+          <select name="item[category]">
+            <option>Select dropdown</option>
+            <option value="Computer" <% if (item.category == "Computer"){ %><%= "selected"  %><% }%>>Computer/Tablet</option>
+            <option value="Audio" <% if (item.category == "Audio"){ %><%= "selected"  %><% }%>>Audio Equipment</option>
+            <option value="Video" <% if (item.category == "Video"){ %><%= "selected"  %><% }%>>Video Equipment</option>
+            <option value="Accessories <% if (item.category == "Accessories"){ %><%= "selected"  %><% }%>">Accessories</option>
+            <option value="Misc">Miscellaneous</option>
+          </select>
+        </div>
+      </div>
+    </div>
+   
+    <div class="field">
+      <label class="label">Item Image</label>
+      <div class="control">
+        <input class="input" type="text" name="item[image]" value="<%= item.image %>">
+      </div>
+    </div>
+    
+    
+    
+    <div class="field">
+      <label class="label">Description</label>
+      <div class="control">
+        <textarea class="textarea" placeholder="" name="item[description]" ><%= item.description %></textarea>
+      </div>
+    </div>
+    
+    
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>"></p>
+    <input class="button is-primary" type="submit" value="Submit">
+
+    
+    
+</form>
+
+
+
+
+
+<% include partials/footer %>

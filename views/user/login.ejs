@@ -1,0 +1,85 @@
+<% include ../partials/header %>
+
+
+<section class="hero is-fullheight is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <form class="container box column is-centered is-4-widescreen is-5-tablet is-three-quarters-mobile" action="/user/login" method="POST">
+         <h1 class="title is-size-1 has-text-centered">
+          Login
+        </h1>
+          <!--Add validation errors-->
+          <% if(hasErrors) { %>
+            <div class="notification is-danger"> 
+              <% messages.forEach(function(message){ %>
+                <%= message %><br>
+              <% }); %>
+            </div>
+          <% } %>
+          
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input class="input" type="text" id="email" name="email" value="">
+            </div>
+          </div>
+          
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input class="input" type="password" id= "password" name="password" value="">
+            </div>
+          </div>
+          
+          <a class="button is-info is-inverted" href="/user/sign-up">
+            <span>Sign Up</span>
+          </a>
+      
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <input class="w-100 button is-primary is-medium m-t-15" type="submit" value="Login">
+      </form>
+    </div>
+  </div>
+</section>
+    <% include ../partials/footer %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.4.0/trianglify.min.js"></script>
+    <script>
+        $(function(){
+              var pattern = Trianglify({
+                width: Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
+                height: Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+            cell_size: 150,
+            variance: 1,
+            x_colors: ["#00d1b2", "#447FDF", "#8FB2EB" ],
+            y_colors: ["#447FDF", "#447FDF", "#447FDF" ],
+            palette: Trianglify.colorbrewer,
+            stroke_width: 1.51,
+        });
+        
+        // Serialize the SVG object to a String
+        var m = new XMLSerializer().serializeToString(pattern.svg());
+        
+        // Perform the base64 encoding of the String
+        var k = window.btoa(m);
+        
+        // Query the element to set the background image property
+        var element = document.getElementsByClassName('hero')[0];
+        
+        // Set the background image property, including the encoding type header
+        element.style.backgroundImage = 'url("data:image/svg+xml;base64,' + k + '")';
+            })
+    </script>
+
+
+
+
+
+
+<!--<section class="section">-->
+<!--  <div class="container">-->
+<!--    <p class="has-text-centered">Don't have an account? -->
+<!--      <a href="/user/sign-up">Sign up</a>-->
+<!--    </p>-->
+<!--  </div>-->
+<!--</section>-->
+

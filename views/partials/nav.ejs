@@ -1,0 +1,75 @@
+<header class="nav p-x-50">
+    
+        <div class="nav-left">
+          <a class="nav-item has-text-light" href="/">
+            <svg class="icon icon-check-square-o"><use xlink:href="#icon-check-square-o"></use></svg>TechCheck
+          </a>
+        </div>
+        <span class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <div class="nav-right nav-menu ">
+          <a class="nav-item is-active has-text-light" href="/">
+            Home
+          </a>
+          <% if(session.admin == true) { %>
+          <a class="nav-item has-text-light" href="/items/new">
+            Add Item
+          </a>
+          <a class="nav-item has-text-light" href="/stats">
+            Stats
+          </a>
+          <% } %>
+          <a class="nav-item has-text-light" href="/shopping-cart">
+            Shopping Cart
+            <% if(session.cart) { %>
+              <span class="tag is-success is-rounded m-l-5"> <%= session.cart.totalQty %> </span>
+            <% } %>
+          </a>
+          
+          <% if(!login){ %>
+            <!--<span class="nav-item pr-1">-->
+            <!--  <a class="button is-info is-inverted" href="/user/sign-up">-->
+                <!--<span class="icon">-->
+                <!--  <i class="fa fa-github"></i>-->
+                <!--</span>-->
+            <!--    <span>Sign Up</span>-->
+            <!--  </a>-->
+            <!--</span>-->
+            <span class="nav-item">
+              <a class="button is-info is-inverted" href="/user/login">
+                <!--<span class="icon">-->
+                <!--  <i class="fa fa-github"></i>-->
+                <!--</span>-->
+                <span>Login</span>
+              </a>
+            </span>
+          </div>
+        <% } %>  
+        <% if(login){ %>
+          <span class="nav-item">
+            <% if (session.admin == true) { %>
+              <a class="button is-inverted hover-green" href="/user/orders">
+                <span>Orders</span>
+              </a>
+            <% } else { %>
+              <a class="button is-inverted " href="/user/profile">
+                <span>Profile</span>
+              </a>
+            <% } %>
+              
+            </span>
+          <span class="nav-item">
+              <a class="button  is-inverted hover-red" href="/user/logout">
+                <!--<span class="icon">-->
+                <!--  <i class="fa fa-github"></i>-->
+                <!--</span>-->
+                <span>Logout</span>
+              </a>
+            </span>
+         <% } %>    
+        </div>
+   
+</header>

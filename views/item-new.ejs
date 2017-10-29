@@ -1,0 +1,77 @@
+<% include partials/header %>
+<% include partials/nav %>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-size-1">
+        Add A New Item
+      </h1>
+      <h2 class="subtitle">
+        
+      </h2>
+    </div>
+  </div>
+</section>
+
+<form class="container column is-centered is-one-quarter is-three-quarters-mobile" action="/items" method="POST">
+    <div class="field">
+      <label class="label">Item Name</label>
+      <div class="control">
+        <input class="input" type="text" name="item[name]" placeholder="e.g iPad">
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Item Brand</label>
+      <div class="control">
+        <input class="input" type="text" name="item[brand]" placeholder="e.g Apple">
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Quantity Available</label>
+      <div class="control">
+        <input class="input" type="text" name="item[quantity]" placeholder="e.g. 10">
+      </div>
+    </div>
+    
+    <!--Make dropdown-->
+    <div class="field">
+      <label class="label">Category</label>
+      <div class="dropdown control">
+        <div class="select" >
+          <select name="item[category]">
+            <option>Select A Category</option>
+            <option value="Computer">Computer/Tablet</option>
+            <option value="Audio">Audio Equipment</option>
+            <option value="Video">Video Equipment</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Misc">Miscellaneous</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+     <div class="field">
+      <label class="label">Description</label>
+      <div class="control">
+        <textarea class="textarea" placeholder="" name="item[description]" ></textarea>
+      </div>
+    </div>
+    
+    
+    <div class="field">
+      <label class="label">Item Image</label>
+      <div class="control">
+        <input class="input" type="text" name="item[image]" placeholder="enter an image URL">
+      </div>
+    </div>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>"></p>
+    <input class="button is-primary" type="submit" value="Submit">
+</form>
+
+
+
+
+<% include partials/footer %>

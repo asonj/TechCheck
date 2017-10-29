@@ -1,0 +1,153 @@
+<% include partials/header %>
+
+
+<section class="hero is-info is-medium" id="home">
+  <!-- Hero header: will stick at the top -->
+  <div class="hero-head">
+    <% include partials/nav %>
+  </div>
+
+  <% if(hasErrors) { %>
+      <div class="notification is-success has-text-centered is-size-4"> 
+        <% messages.forEach(function(message){ %>
+          <%= message %><br>
+        <% }); %>
+      </div>
+    <% } %>
+    
+  <!-- Hero content: will be in the middle -->
+  
+  <div class="hero-body">
+    <div class="columns is-multiline">
+      <div class="container column is-12 is-5-widescreen has-text-centered ">
+        <h1 class="logo title ">
+          <svg class="icon icon-check-square-o"><use xlink:href="#icon-check-square-o"></use></svg>
+          TechCheck
+        </h1>
+        
+        <h2 class="subtitle has-text-centered ">
+          create an order below
+        </h2>
+        
+      </div> 
+      
+      <!--<div class="column container is-12 is-5-widescreen ">-->
+      <!--  <div class="comment-container">-->
+      <!--    <% if(typeof comments != "undefined" ) { %>-->
+          
+      <!--    <div id="comment-box" class="comment box">-->
+      <!--      <% comments.forEach(function(comment) { %>-->
+      <!--          <article class="media">-->
+      <!--            <div class="media-content">-->
+      <!--              <div class="content">-->
+      <!--                <p>-->
+      <!--                  <strong class="tooltip is-tooltip-right" data-tooltip="<%= comment.created.toLocaleString("en-US", {timeZone: "America/Los_Angeles"}) %> "><%= comment.name %>: </strong>-->
+      <!--                  <%= comment.comment %>-->
+      <!--                </p>-->
+      <!--              </div>-->
+      <!--            </div>-->
+      <!--            <div class="media-right">-->
+      <!--              <button id="comment-delete" class="delete" data-id="<%= comment._id %>"></button>-->
+      <!--            </div>-->
+      <!--          </article>-->
+      <!--      <% }) %>-->
+      <!--    </div>-->
+      <!--    <% } %>-->
+      <!--    <div class="field has-addons">-->
+      <!--      <p class="control">-->
+      <!--        <input id="input-name" class="input" type="text" name="name" placeholder="Name">-->
+      <!--      </p>-->
+      <!--      <p class="control is-expanded">-->
+      <!--        <input id="input-comment" class="input" type="text" name="comment" placeholder="Add a note">-->
+      <!--      </p>-->
+      <!--      <p class="control">-->
+      <!--         <input id="token" type="hidden" name="_csrf" value="<%= csrfToken %>">-->
+      <!--        <a id="post-comment" class="button is-success">-->
+      <!--          Post-->
+      <!--        </a>-->
+      <!--      </p>-->
+      <!--    </div>-->
+      <!--  </div>-->
+      <!--</div>-->
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- Hero footer: will stick at the bottom -->
+  <div class="hero-foot">
+    <nav class="tabs is-boxed is-fullwidth">
+      <div class="container">
+        <ul class="filters-button-group-index tabs">
+          <li><button class="button header-tab active" data-filter="*">All</button></li>
+          <li><button class="button header-tab" data-filter=".Computer">Computer/Tablet</button></li>
+          <li><button class="button header-tab" data-filter=".Audio">Audio Equipment</button></li>
+          <li><button class="button header-tab" data-filter=".Video">Video Equipment</button></li>
+          <li><button class="button header-tab" data-filter=".Accessories">Accessories</button></li>
+          <li><div class="field has-addons is-horizontal w-100 header-tab">
+          <div class="control">
+            <input type="text" class="input quicksearch" placeholder="Search" />
+          </div>
+          
+        </div>
+          
+        </div></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</section>
+
+
+<section id="items" class="section items m-t-25">
+    <div class="grid-index">
+       <div class="grid-sizer"></div>
+        <% items.forEach((item, i) => { %>
+          <div class="element-item-index card  <%=item.category%>">
+            <a href="/items/<%= item._id%>">
+            <div class="card-image">
+              <figure class="image is-square">
+                
+                <!--<img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">-->
+                <img class="lazy" data-original="<%= item.image %>" src="assets/loading.gif" width="500" height="500" alt="<%= item.name %> Image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <p class="title is-4"> <%= item.name %> </p>
+                  <p class="subtitle is-6"> <%= item.brand %> </p>
+                </div>
+                <div class="media-right">
+                  <div class="field is-grouped is-grouped-multiline is-pulled-right">
+                    <div class="control">
+                      <div class="tags has-addons">
+                        <span class="tag is-light is-medium">quantity</span>
+                        <span class="tag is-success"> <%= item.quantity %></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--<div class="content">-->
+              <!--  Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
+              <!--  Phasellus nec iaculis mauris. <a>@bulmaio</a>.-->
+              <!--  <a>#css</a> <a>#responsive</a>-->
+              <!--  <br>-->
+              <!--  <small>11:09 PM - 1 Jan 2016</small>-->
+              <!--</div>-->
+            </div>
+            </a>
+          </div>
+        <% }) %>
+    </div>
+
+</section>
+
+<button onclick="topFunction()" id="buttonToTop" class="buttonToTop button" title="Go to top"><svg class="icon icon-angle-double-up"><use xlink:href="#icon-angle-double-up"></use></svg></button>
+
+
+
+<% include partials/footer %>
+

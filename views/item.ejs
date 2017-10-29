@@ -1,0 +1,116 @@
+<% include partials/header %>
+<% include partials/nav %>
+
+<% if(hasErrors) { %>
+  <div class="notification is-danger"> 
+    <% messages.forEach(function(message){ %>
+      <%= message %><br>
+    <% }); %>
+  </div>
+<% } %>
+
+<section class="hero is-fullheight is-light is-large d-flex">
+  <div class="container box">
+      <div class="columns is-desktop">
+          <div class="column">
+              <figure class="image is-square">
+                <img src="../<%= item.image %>">
+              </figure>
+          </div>
+          <div class="column">
+              <div class="myflex">
+                  <div class="item-left">
+                     <p class="is-capitalized title is-1"> <%= item.name %> </p> 
+                     <p class="subtitle is-3"> <%= item.brand %> </p>
+                  </div>
+                  <% if(session.admin == true) { %>
+                      <div class="item-right">
+                        <div class="field is-grouped">
+                          <a class="button" href="/items/<%= item._id %>/edit">Edit</a>
+                          <a id="modal-delete-button" class="button is-danger m-l-10" href="#">Delete</a>
+                        </div>
+                      </div>
+                  <% } %>
+              </div>
+              <div class="myflex w-100 m-t-20">
+                <div class="left">
+                  <div class="tags has-addons m-t-10">
+                    <span class="tag is-light is-large">Quantity Available </span>
+                    <span class="tag is-success is-large"> <%= item.quantity %></span>
+                  </div>
+                </div>
+                <div class="right m-t-10">
+                  <form class="add-to-cart" action="/add-to-cart/<%= item._id %>" method="POST">
+                      <div class="field has-addons">
+                        <p class="control">
+                          <input class="input" type="text" name="quantity" placeholder="Quantity needed" value="">
+                        </p>
+                        <p class="control"> 
+                          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                          <button class="button is-success" type="submit">Add to cart</button>
+                        </p>
+                      </div>
+                  </form>
+                </div>
+              </div>
+              <% if(item.description != "") {%>
+              
+              <section class="section p-l-0">
+                <h2 class="title is-4">Description</h2>
+                <%= item.description %>
+              </section>
+              <% } %>
+              
+              <% if(typeof orders != 'undefined' && orders.length != 0){ %>
+                  <h2 class="title is-4 p-t-20">Reservations</h2>
+                    <div class="content ">
+                        <table class="table sortable is-striped is-fullwidth is-bordered">
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Date</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <% orders.forEach(function(order){ %>
+                                <tr>
+                                    <td> <%= order.name %> </td>
+                                    <td> <%= order.qty %> </td>
+                                    <td> <%= order.reserveDate %> </td>
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% } %>
+          </div>
+      </div>
+    </div>
+</section>
+
+
+<div id="modal-delete" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Are you sure you want to delete <%= item.name %>?</p>
+          <button class="delete modal-cancel-button" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <div class="field is-grouped">
+              <p class="control">
+                <form class="" action="/items/<%= item._id%>?_method=DELETE" method="POST">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="button is-danger">Delete</button>
+                </form>
+              </p>
+              <p class="control p-l-10">
+                <button class="button modal-cancel-button">Cancel</button>
+              </p>
+            </div>
+        </section>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+<% include partials/footer %>

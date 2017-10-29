@@ -1,0 +1,60 @@
+<% include ../partials/header %>
+<% include ../partials/nav %>
+
+<% if(hasErrors) { %>
+      <div class="notification is-danger has-text-centered is-size-4"> 
+        <% messages.forEach(function(message){ %>
+          <%= message %><br>
+        <% }); %>
+      </div>
+    <% } %>
+    
+<section class="hero is-light is-large">
+    <div class="hero-body columns">
+        <div class="container column box is-6">
+            <h1 class="is-size-1 has-text-centered p-b-20">Your Shopping Cart</h1>
+                <% if(items){ %>
+                    <div class="content">
+                        <table>
+                            <thead>
+                              <tr>
+                                <th>Item</th>
+                                <th>Brand</th>
+                                <th>Quantity</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <% items.forEach(function(item){ %>
+                                <tr>
+                                    <td> <%= item.item.name %> </td>
+                                    <td> <%= item.item.brand %> </td>
+                                    <td> <%= item.qty %> </td>
+                                    <td> 
+                                        <div class="field is-grouped is-pulled-right">
+                                            <a class="button is-danger is-outlined is-small" href="/remove/<%= item.item._id %>">Remove Item</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="columns">
+                        <div class="column is-5 is-offset-3 p-t-50">
+                            <a class ="button is-success w-100" href="/checkout">Checkout</a>
+                            
+                        </div>
+                        
+                    </div>
+                
+                <% } else { %>
+                    <h1 class="has-text-centered is-1">Is Empty</h1>
+                <% } %>
+            </div>
+    </div>  
+</section>
+
+<% include ../partials/footer %>

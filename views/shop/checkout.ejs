@@ -1,0 +1,101 @@
+<% include ../partials/header %>
+<% include ../partials/nav %>
+
+<section class="hero ">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-size-1">
+        Checkout
+      </h1>
+      <h2 class="subtitle">
+        Collect info from customer
+      </h2>
+    </div>
+  </div>
+</section>
+
+<% if(hasErrors) { %>
+  <div class="notification is-success has-text-centered is-size-4"> 
+    <% messages.forEach(function(message){ %>
+      <%= message %><br>
+    <% }); %>
+  </div>
+<% } %>
+
+<form id="checkout-form" class="container column is-centered is-4 is-three-quarters-mobile" action="/checkout" method="POST">
+    
+    <!--Add validation errors-->
+
+    
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" type="text" id="name" name="name" value="" required>
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">ID Number</label>
+      <div class="control">
+        <input class="input" type="number" name="idNum" value="">
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" type="email" id="email" name="email" value="" required>
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Phone Number</label>
+      <div class="control">
+        <input class="input" type="text" id= "number" name="number" value="" required>
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Return Date</label>
+      <div class="control">
+        <input class="input" type="date" name="returnDate" required>
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Staff Initials</label>
+      <div class="control">
+        <input class="input" type="text" maxlength="3" name="initials" required>
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Comments</label>
+      <div class="control">
+        <textarea class="textarea" placeholder="" name="comments"></textarea>
+      </div>
+    </div>
+    
+    <label class="checkbox d-block m-b-20">
+      <input id="reserve-checkbox" type="checkbox" name="reservation">
+      This is a reservation
+    </label>
+
+    <div class="field hidden" id="reserve-date">
+      <label class="label">Reserve For</label>
+      <div class="control">
+        <!--<input class="input" type="date" name="reserveDate">-->
+        <input class="input" id="datePick" type="text" name="reserveDate"/>
+      </div>
+    </div>
+    
+    
+    
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+    <input id="checkout-button" class="button is-primary" type="submit" value="Submit">
+    
+    
+</form>
+
+<% include ../partials/footer %>

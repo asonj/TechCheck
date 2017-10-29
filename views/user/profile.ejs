@@ -1,0 +1,53 @@
+<% include ../partials/header %>
+<% include ../partials/nav %>
+
+
+    <h1 class="is-size-1 has-text-centered">Profile</h1>
+
+    <section class = "section" >
+    <div class="container box">
+        <% orders.forEach(function(order){ %>
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  Order from <%= order.created  %>
+                </p>
+                <a class="card-header-icon">
+                  <span class="icon">
+                    <i class="fa fa-angle-down"></i>
+                  </span>
+                </a>
+              </header>
+              <div class="card-content">
+                    <div class="content">
+                        <table>
+                            <thead>
+                              <tr>
+                                <th>Item</th>
+                                <th>Brand</th>
+                                <th>Quantity</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <% order.items.forEach(function(item) { %>
+                                <tr>
+                                    <td> <%= item.item.name %> </td>
+                                    <td> <%= item.item.brand %> </td>
+                                    <td> <%= item.qty %> </td>
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+              </div>
+              <!--<footer class="card-footer">-->
+              <!--  <a class="card-footer-item">Save</a>-->
+              <!--  <a class="card-footer-item">Edit</a>-->
+              <!--  <a class="card-footer-item">Delete</a>-->
+              <!--</footer>-->
+            </div>
+        <% }) %>
+    </div> <
+    /section>
+
+<% include ../partials/footer %>

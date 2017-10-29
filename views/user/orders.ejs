@@ -1,0 +1,128 @@
+<% include ../partials/header %>
+<% include ../partials/nav %>
+
+
+    
+<section class="hero  is-info is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-centered is-1">
+        Orders
+      </h1>
+      <div class="field has-addons is-grouped-multiline is-horizontal has-addons-centered p-t-15">
+        <div class="control">
+          <input type="text" class="input  is-info quicksearch" placeholder="Search" autofocus/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <nav class="tabs is-boxed is-fullwidth">
+      <div class="container">
+        <ul class="filters-button-group  tabs">
+          <li><button class="button header-tab active" data-filter="*">All</button></li>
+          <li><button class="button header-tab" data-filter=".pending">Pending</button></li>
+          <li><button class="button header-tab" data-filter=".out">Out</button></li>
+          <li><button class="button header-tab" data-filter=".cancelled">Cancelled</button></li>
+          <li><button class="button header-tab" data-filter=".true">Reservation</button></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</section>
+
+
+
+<section class="section columns p-t-50" >
+  <div class="container column is-10 is-8-widescreen ">
+    <div class="grid">
+      <% orders.slice(0,100).forEach(function(order, index){ %>
+          <div class="element-item card order w-100 <%=order.status%> <%= order.reservation %> " data-id="<%= order._id %>">
+            <header class="card-header">
+              <p class="card-header-title">
+                Submitted by <%= order.initials %> at <%= order.created.toLocaleString("en-US", {timeZone: "America/Los_Angeles"}) %>
+              </p>
+              <% if(order.reservation) { %>
+                <span class="tag is-dark is-medium ml-auto m-r-10 m-t-10">Reservation</span>
+              <% } %>
+              <% if(order.status == "pending") { %>
+                <span class="tag is-info is-medium ml-auto m-r-10 m-t-10">Pending</span>
+              <% } %>
+              <% if(order.status == "out") { %>
+                <% if((new Date(order.returnDate).getDate() < new Date().getDate())) { %>
+                  <span class="tag is-danger is-medium ml-auto m-r-10 m-t-10">Late</span>
+                <% } %>
+                <span class="tag is-warning is-medium ml-auto m-r-10 m-t-10">Out</span>
+              <% } %>
+              <% if(order.status == "returned") { %>
+                <span class="tag is-success is-medium ml-auto m-r-10 m-t-10">Returned</span>
+              <% } %>
+              <% if(order.status == "cancelled") { %>
+                <span class="tag is-danger is-medium ml-auto m-r-10 m-t-10">Cancelled</span>
+              <% } %>
+              
+              
+            </header>
+            <section class="section p-t-10 p-b-10">
+              <!--<a class="order-edit button" href="/user/order/<%= order._id %>/edit">Edit</a>-->
+              <div class=" columns is-desktop">
+                <div class="column is-narrow">
+                  <h2 class="subtitle m-b-0">Name: <%= order.name %> </h2>
+                  <h2 class="subtitle m-b-0">ID: <%= order.idNum %> </h2>
+                  <h2 class="subtitle m-b-0">Email: <%= order.email %> </h2>
+                  <h2 class="subtitle m-b-0">Phone: <%= order.number %> </h2>
+                  <h2 class="subtitle m-b-0" <% if((new Date(order.returnDate).getTime() < new Date().getTime())) { %><%= style="color:red" %><% } %>>Return Date: <%= order.returnDate.toLocaleString("en-US", {timeZone: "America/Los_Angeles"})%> </h2>
+                  <% if(order.reserveDate != "") { %>
+                    
+                    <h2 class="subtitle m-b-0">Reservation Date: <%= order.reserveDate %> </h2>
+                    
+                  <% } %>
+                </div>
+                <% if(order.comment != "") {%>
+                  <div class="column comments">
+                    <h2 class="subtitle m-b-0">Comments: <%= order.comment %> </h2>
+                  </div>
+                <% } %>
+                <div class="column order-edit p-r-0">
+                  <a class="order-edit button " href="/user/orders/<%= order._id %>/edit"><svg class="icon icon-pencil"><use xlink:href="#icon-pencil"></use></svg></a>
+                </div>
+              </div>
+            </section>
+            <div class="card-content">
+                  <div class="content">
+                      <table>
+                          <thead>
+                            <tr>
+                              <th>Item</th>
+                              <th>Brand</th>
+                              <th>Quantity</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <% order.items.forEach(function(item) { %>
+                              <tr>
+                                  <td> <a class="hoverLink" href="/items/<%= item.item._id %>"> <%= item.item.name %> </a></td>
+                                  <td> <%= item.item.brand %> </td>
+                                  <td> <%= item.qty %> </td>
+                              </tr>
+                              <% }) %>
+                          </tbody>
+                      </table>
+                  </div>
+            </div>
+            <% if(order.status != "returned" && order.status != "cancelled") { %>
+              <footer class="card-footer">
+                <input type="hidden" id="token" name="_csrf" value="<%= csrfToken %>">
+                <a id="btn-pending" class="card-footer-item">Pending</a>
+                <a id="btn-out" class="card-footer-item">Checked Out</a>
+                <a id="btn-returned" class="card-footer-item">Returned</a>
+                <a id="btn-cancelled" class="card-footer-item">Cancelled</a>
+              </footer>
+            <% } %>
+          </div>
+      <% }) %>
+      </div>
+  </div> 
+</section>
+
+<% include ../partials/footer %>

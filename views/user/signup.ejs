@@ -1,0 +1,59 @@
+<% include ../partials/header %>
+<% include ../partials/nav %>
+
+<section class="hero ">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-size-1">
+        Sign Up
+      </h1>
+      <h2 class="subtitle">
+        
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<form class="container column is-centered is-4 is-three-quarters-mobile" action="/user/sign-up" method="POST">
+    
+    <!--Add validation errors-->
+    <% if(hasErrors) { %>
+      <div class="notification is-danger"> 
+        <% messages.forEach(function(message){ %>
+          <%= message %><br>
+        <% }); %>
+      </div>
+    <% } %>
+    
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" type="text" id="email" name="email" value="">
+      </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control">
+        <input class="input" type="password" id= "password" name="password" value="">
+      </div>
+    </div>
+
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+    <input class="button is-primary" type="submit" value="Sign Up">
+    
+</form>
+
+
+<section class="section">
+  <div class="container">
+    <p class="has-text-centered">Already have an account? 
+      <a href="/user/login">Login</a>
+    </p>
+  </div>
+</section>
+
+
+<% include ../partials/footer %>
