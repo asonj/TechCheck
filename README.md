@@ -25,7 +25,7 @@ gulp watch
 
 
 
-Visit *localhost:8080* to view the sit. (or localhost:8081 for live reload with [BrowserSync](https://github.com/BrowserSync/browser-sync))
+Visit *localhost:8080* to view the site. Use localhost:8081 for live reload with [BrowserSync](https://github.com/BrowserSync/browser-sync).
 
 
 
