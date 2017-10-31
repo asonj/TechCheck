@@ -152,7 +152,7 @@ app.get('/sign-up',function(req,res, next){
 app.post('/sign-up', passport.authenticate('local.signup', {
     failureRedirect: '/user/sign-up',
     failureFlash: true
-}), function(req, res, next) { //if login is successful
+}), setAdmin, function(req, res, next) { //if login is successful
     if (req.session.fromUrl) {
         var oldUrl = req.session.fromUrl
         req.session.fromUrl = null;
@@ -225,7 +225,7 @@ function notLoggedIn(req, res, next) {
 }
 
 function setAdmin(req, res, next) {
-      var email = req.user.email;
+      var email = req.user.email || req.body.email;
     
       if (email == process.env.ADMIN_EMAIL) { 
         req.session.admin = true;
