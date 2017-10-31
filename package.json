@@ -11,6 +11,7 @@
   "author": "Alex Johnson - asonj",
   "license": "AGPL-3.0",
   "repository": {"type" : "git", "url" : "https://github.com/npm/npm.git"},
+  "engines" : { "node" : "^6.11.2" },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
