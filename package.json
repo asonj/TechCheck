@@ -1,5 +1,5 @@
 {
-  "name": "TechCheck",
+  "name": "techcheck",
   "version": "1.0.0",
   "description": "TechCheck is an open-source inventory checkout and reservation web app",
   "main": "server.js",
@@ -8,9 +8,9 @@
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "start": "node server.js"
   },
-  "author": "Alex Johnson, asonj",
-  "license": "ISC",
-  "repository": {},
+  "author": "Alex Johnson - asonj",
+  "license": "AGPL-3.0",
+  "repository": {"type" : "git", "url" : "https://github.com/npm/npm.git"},
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
