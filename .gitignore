@@ -3,6 +3,7 @@
 
 # User
 dbMGMT.js
+dist/
 
 # Logs
 logs
