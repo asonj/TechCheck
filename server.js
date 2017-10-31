@@ -32,6 +32,11 @@ const Comment = require('./models/comment.js');
 //ROUTES
 const userRoutes = require('./routes/user')
 
+if(env === "production"){
+    app.use(express.static(path.join(__dirname, 'dist')));
+} else {
+    app.use(express.static(path.join(__dirname, 'dev')));
+}
 
 
 ////////////////////////////
@@ -65,11 +70,7 @@ require('./config/passport');
 
 app.use('/scripts', express.static('node_modules'));
 
-if(env === "production"){
-    app.use(express.static(path.join(__dirname, 'dist')));
-} else {
-    app.use(express.static(path.join(__dirname, 'dev')));
-}
+
 
 //set global variables using res.locals
 app.use(function(req, res, next){
