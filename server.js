@@ -246,7 +246,7 @@ app.post("/items", checkAdmin, function(req,res){
     var quantity = req.body.item.quantity;
     var category = req.body.item.category;
     var description = req.body.item.description;
-    var image = req.body.item.image != "" ? req.body.item.image : "assets/placerImage.png";
+    var image = req.body.item.image != "" ? req.body.item.image : "https://source.unsplash.com/category/buildings/?tech";
     var newItem = {
         name,
         brand,
