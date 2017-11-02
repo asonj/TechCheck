@@ -10,9 +10,13 @@
   },
   "author": "Alex Johnson - asonj",
   "license": "AGPL-3.0",
-  "repository": {"type" : "git", "url" : "https://github.com/npm/npm.git"},
-  "engines" : { 
-    "node" : "^6.11.2"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npm/npm.git"
+  },
+  "engines": {
+    "node": "^8.5.0",
+    "npm": "^5.5.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
