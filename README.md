@@ -1,6 +1,6 @@
 # Tech✔Check  
 
-TechCheck is an open-source inventory checkout and reservation web app. Get started with a self hosted version, or try the live demo. 
+TechCheck is an open-source inventory checkout and reservation web app. Get started with a self hosted version, or try the [live demo](https://techcheck-demo.herokuapp.com/). 
 
 ## Getting Started
 
@@ -12,6 +12,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 [MongoDB](https://github.com/mongodb/mongo)
 
+[Gulp](https://github.com/gulpjs/gulp)
+
 ### Installing
 
 Once prerequisites have been installed:
@@ -19,15 +21,13 @@ Once prerequisites have been installed:
 ```
 git clone https://github.com/asonj/TechCheck.git
 npm install
-mongod
-gulp watch
+mongod     //Don't have mongodb? "npm run get-mongodb"
+gulp watch //Don't have gulp? "npm run get-gulp"
 ```
 
+Visit `localhost:8080/user/sign-up` and create a new account.
 
-
-Visit *localhost:8080* to view the site. Use localhost:8081 for live reload with [BrowserSync](https://github.com/BrowserSync/browser-sync).
-
-
+Add your email to the .env `ADMIN_EMAIL` variable. Refresh the page and you will be up and running.
 
 
 ## Deployment
@@ -46,6 +46,8 @@ To test the minified files:
 gulp watch-production
 ```
 ## Notes
+
+You can use localhost:8081 for live-reload with [BrowserSync](https://github.com/BrowserSync/browser-sync)
 
 If pushing to a public source, be sure to uncomment the line for .env in the .gitignore file. 
 
