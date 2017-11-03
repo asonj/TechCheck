@@ -4,11 +4,12 @@
   "description": "TechCheck is an open-source inventory checkout and reservation web app",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "get-gulp": "npm install --save-dev gulp-cli -g",
+    "get-mongodb": "sudo apt-get install -y mongodb-org"
   },
   "author": "Alex Johnson - asonj",
   "license": "AGPL-3.0",
-
   "repository": {
     "type": "git",
     "url": "https://github.com/asonj/TechCheck"
@@ -17,7 +18,6 @@
     "node": "^8.5.0",
     "npm": "^5.5.1"
   },
-
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
