@@ -1,6 +1,7 @@
 # Tech✔Check  
 
 TechCheck is an open-source inventory checkout and reservation web app. Get started with a self hosted version, or try the [live demo](https://techcheck-demo.herokuapp.com/). 
+*Note:* The demo site is hosted on a free heroku dyno which takes time to spin up on first load. This slow load time is not present on a local or production version.
 
 ## Getting Started
 
@@ -27,7 +28,9 @@ gulp watch //Don't have gulp? "npm run get-gulp"
 
 Visit `localhost:8080/user/sign-up` and create a new account.
 
-Add your email to the .env `ADMIN_EMAIL` variable. Refresh the page and you will be up and running.
+Add your email to the `ADMIN_EMAIL` variable locatead within `/.env`. 
+
+Refresh the page and you will be up and running.
 
 
 ## Deployment
@@ -36,9 +39,9 @@ Add your email to the .env `ADMIN_EMAIL` variable. Refresh the page and you will
 gulp build
 ```
 
-The */dist* directory will contain the minified production files.
+The `/dist` directory will contain the minified production files.
 
-Environment variables located in /.env are set to defaults and should be customized before deploying. 
+Environment variables located in `/.env` are set to defaults and should be customized before deploying. 
 
 To test the minified files:
 
@@ -47,9 +50,9 @@ gulp watch-production
 ```
 ## Notes
 
-You can use localhost:8081 for live-reload with [BrowserSync](https://github.com/BrowserSync/browser-sync)
+You can use `localhost:8081` for live-reload with [BrowserSync](https://github.com/BrowserSync/browser-sync)
 
-If pushing to a public source, be sure to uncomment the line for .env in the .gitignore file. 
+If pushing to a public source, be sure to uncomment the line for .env in `/.gitignore`. 
 
 
 ## Built With
