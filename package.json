@@ -1,6 +1,6 @@
 {
   "name": "techcheck",
-  "version": "1.0.0",
+  "version": "1.0.0-beta",
   "description": "TechCheck is an open-source inventory checkout and reservation web app",
   "main": "server.js",
   "scripts": {
