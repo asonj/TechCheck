@@ -281,9 +281,6 @@ $('#reserve-checkbox').change(function(){
 
 
 $(function(){
-  if(window.location != "https://check-project-ajjbones.c9users.io:8081/" || window.location != "https://interesc.com/"){
-    $('#footer').removeClass('hidden')
-  }
   $("img.lazy").lazyload();
   $('#datePick').multiDatesPicker();
 })
